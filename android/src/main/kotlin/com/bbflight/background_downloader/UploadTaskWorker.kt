@@ -117,10 +117,10 @@ class UploadTaskWorker(applicationContext: Context, workerParams: WorkerParamete
         // binary file upload posts file bytes directly
         // set Content-Type based on file extension
         Log.d(TAG, "Binary upload for taskId ${task.taskId}")
-        connection.setRequestProperty("Content-Type", task.mimeType)
-        connection.setRequestProperty(
-            "Content-Disposition", "attachment; filename=\"" + task.filename + "\""
-        )
+        // connection.setRequestProperty("Content-Type", task.mimeType)
+        // connection.setRequestProperty(
+        //    "Content-Disposition", "attachment; filename=\"" + task.filename + "\""
+        // )
         connection.setRequestProperty("Content-Length", fileSize.toString())
         connection.setFixedLengthStreamingMode(fileSize)
         return withContext(Dispatchers.IO) {
